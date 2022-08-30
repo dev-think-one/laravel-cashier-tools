@@ -2,14 +2,11 @@
 
 namespace CashierUtils\Tests;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Cashier\CashierServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
 {
-    use DatabaseMigrations;
-
     protected function getPackageProviders($app)
     {
         return [
