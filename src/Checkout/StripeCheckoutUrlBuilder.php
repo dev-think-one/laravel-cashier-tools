@@ -57,14 +57,24 @@ class StripeCheckoutUrlBuilder
     public static function prepareSuccessUrl(string $url, ?string $resultStatus = null): string
     {
         return static::make($url)->withSessionId()
-                     ->useResultStatus($resultStatus ?? static::$statusSuccess)
-                     ->url();
+            ->useResultStatus($resultStatus ?? static::$statusSuccess)
+            ->url();
     }
 
     public static function prepareCancelUrl(string $url, ?string $resultStatus = null): string
     {
         return static::make($url)
-                     ->useResultStatus($resultStatus ?? static::$statusCanceled)
-                     ->url();
+            ->useResultStatus($resultStatus ?? static::$statusCanceled)
+            ->url();
+    }
+
+    public static function prepareUrls(string $successUrl, ?string $cancelUrl = null): array
+    {
+        $cancelUrl = $cancelUrl ?? $successUrl;
+
+        return [
+            'success_url' => static::prepareSuccessUrl($successUrl),
+            'cancel_url'  => static::prepareCancelUrl($cancelUrl),
+        ];
     }
 }

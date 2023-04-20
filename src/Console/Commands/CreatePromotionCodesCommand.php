@@ -76,7 +76,19 @@ class CreatePromotionCodesCommand extends Command
 
     public function getCode(): string
     {
-        $code = Str::replace('$', Str::upper(Str::random((int) ($this->option('chars-count')??0))), $this->option('pattern')??'$');
+        $charsCount = 0;
+        $option     = $this->option('chars-count');
+        if ($option && is_numeric($option)) {
+            $charsCount = (int)$option;
+        }
+        $pattern = '$';
+        $option  = $this->option('pattern');
+        if (!empty($option) && is_string($option)) {
+            $pattern = $option;
+        }
+
+        $code = Str::replace('$', Str::upper(Str::random($charsCount)), $pattern);
+
         if ($code) {
             $codes = $this->stripeClient()->promotionCodes->all([
                 'code' => $code,

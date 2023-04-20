@@ -56,4 +56,23 @@ class StripeCheckoutUrlBuilderTest extends TestCase
         $newUrl = StripeCheckoutUrlBuilder::prepareCancelUrl($url, 'foo');
         $this->assertEquals($url . '&payment_status=foo', $newUrl);
     }
+
+    /** @test */
+    public function prepare_urls()
+    {
+        $successUrl = 'https://test.co.uk/example/hook?foo=bar&baz=';
+        $cancelUrl  = 'https://test.co.uk/example/hook?foo1=bar1&baz1=';
+
+        $newUrls = StripeCheckoutUrlBuilder::prepareUrls($successUrl);
+        $this->assertIsArray($newUrls);
+        $this->assertCount(2, $newUrls);
+        $this->assertEquals($successUrl . '&checkout_session={CHECKOUT_SESSION_ID}&payment_status=success', $newUrls['success_url']);
+        $this->assertEquals($successUrl . '&payment_status=canceled', $newUrls['cancel_url']);
+
+        $newUrls = StripeCheckoutUrlBuilder::prepareUrls($successUrl, $cancelUrl);
+        $this->assertIsArray($newUrls);
+        $this->assertCount(2, $newUrls);
+        $this->assertEquals($successUrl . '&checkout_session={CHECKOUT_SESSION_ID}&payment_status=success', $newUrls['success_url']);
+        $this->assertEquals($cancelUrl . '&payment_status=canceled', $newUrls['cancel_url']);
+    }
 }
