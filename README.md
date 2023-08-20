@@ -1,18 +1,18 @@
 # Set of utils what not added to main laravel cashier stripe package
 
-[![Packagist License](https://img.shields.io/packagist/l/yaroslawww/laravel-cashier-tools?color=%234dc71f)](https://github.com/yaroslawww/laravel-cashier-tools/blob/master/LICENSE.md)
-[![Packagist Version](https://img.shields.io/packagist/v/yaroslawww/laravel-cashier-tools)](https://packagist.org/packages/yaroslawww/laravel-cashier-tools)
-[![Total Downloads](https://img.shields.io/packagist/dt/yaroslawww/laravel-cashier-tools)](https://packagist.org/packages/yaroslawww/laravel-cashier-tools)
-[![Build Status](https://scrutinizer-ci.com/g/yaroslawww/laravel-cashier-tools/badges/build.png?b=master)](https://scrutinizer-ci.com/g/yaroslawww/laravel-cashier-tools/build-status/master)
-[![Code Coverage](https://scrutinizer-ci.com/g/yaroslawww/laravel-cashier-tools/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/yaroslawww/laravel-cashier-tools/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yaroslawww/laravel-cashier-tools/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yaroslawww/laravel-cashier-tools/?branch=master)
+![Packagist License](https://img.shields.io/packagist/l/think.studio/laravel-cashier-tools?color=%234dc71f)
+[![Packagist Version](https://img.shields.io/packagist/v/think.studio/laravel-cashier-tools)](https://packagist.org/packages/think.studio/laravel-cashier-tools)
+[![Total Downloads](https://img.shields.io/packagist/dt/think.studio/laravel-cashier-tools)](https://packagist.org/packages/think.studio/laravel-cashier-tools)
+[![Build Status](https://scrutinizer-ci.com/g/dev-think-one/laravel-cashier-tools/badges/build.png?b=main)](https://scrutinizer-ci.com/g/dev-think-one/laravel-cashier-tools/build-status/main)
+[![Code Coverage](https://scrutinizer-ci.com/g/dev-think-one/laravel-cashier-tools/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/dev-think-one/laravel-cashier-tools/?branch=main)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dev-think-one/laravel-cashier-tools/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/dev-think-one/laravel-cashier-tools/?branch=main)
 
 ## Installation
 
 Install the package via composer:
 
 ```bash
-composer require yaroslawww/laravel-cashier-tools
+composer require think.studio/laravel-cashier-tools
 ```
 
 ## Usage
@@ -28,7 +28,7 @@ php artisan cashier-tools:api:create:promotion-codes COUPON_ID_2021 -S 20 -C 100
 
 Builder to support redirect url params: (Like '{CHECKOUT_SESSION_ID}')
 
-```injectablephp
+```php
 $url = route('cpd.account.index');
 
 $subscription->allowPromotionCodes()
@@ -50,7 +50,7 @@ $subscription->checkout([
 
 ### Use dashboard router
 
-```injectablephp
+```php
 DashboardRouter::fromConfig()->productsUrl()
 DashboardRouter::fromConfig()->productsUrl($stripeProduct->id)
 (new DashboardRouter(true))->promotionCodesUrl($promotionCode->id)
