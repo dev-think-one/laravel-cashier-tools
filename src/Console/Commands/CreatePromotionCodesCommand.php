@@ -114,6 +114,6 @@ class CreatePromotionCodesCommand extends Command
             $params['api_key'] = $key;
         }
 
-        return $this->cachedStripeClient = Cashier::stripe($params);
+        return $this->cachedStripeClient = app(Cashier::class)::stripe($params);
     }
 }
