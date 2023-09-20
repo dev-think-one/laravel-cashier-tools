@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 
 /**
  * @method string subscriptionsUrl(string|null $id = null)
+ * @method string paymentsUrl(string|null $id = null)
  * @method string invoicesUrl(string|null $id = null)
  * @method string productsUrl(string|null $id = null)
  * @method string pricesUrl(string|null $id = null)
